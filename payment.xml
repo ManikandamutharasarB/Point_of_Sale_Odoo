@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+<record id="onlinePOS_payment" model="ir.ui.view">
+		<field name="name">online.pos.payment.form</field>
+		<field name="model">online.pos.payment</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<group>
+							<field name="cash"/>	
+							<field name="upi_payment"/>
+							<field name="card_payment"/>
+							<field name="card_bank" attrs="{'invisible':[('card_payment','not in','credit'),('card_payment','not in','debit')]}"/>
+							<field name="card_holder" attrs="{'invisible':[('card_payment','not in','credit'),('card_payment','not in','debit')]}"/>
+							<field name="card_number" attrs="{'invisible':[('card_payment','not in','credit'),('card_payment','not in','debit')]}"/> 					
+						</group>
+					</group>
+				</sheet>		
+			</form>
+		</field>
+	</record>
+	
+<record id="onlinePOS_payment_record" model="ir.actions.act_window">
+		<field name="name">Payment</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">online.pos.payment</field>
+		<field name="view_mode">tree,form</field>
+</record>
+
+<menuitem id="pos_payment" name="Payment"
+		parent="onlinepos_root" action="onlinePOS_payment_record" sequence="7" />
+
+</odoo>

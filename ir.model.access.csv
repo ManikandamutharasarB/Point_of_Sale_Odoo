@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_online_pos_billing,access.online.pos.billing,model_online_pos_billing,,1,1,1,1
+access_online_pos_product_details,access.online.pos.product.details,model_online_pos_product_details,,1,1,1,1
+access_online_pos_inventory,access.online.pos.inventory,model_online_pos_inventory,,1,1,1,1
+access_online_pos_wizard,access.online.pos.wizard,model_online_pos_wizard,,1,1,1,1
+access_online_pos_customer,access.online.pos.customer,model_online_pos_customer,,1,1,1,1
+access_online_pos_payment,access.online.pos.payment,model_online_pos_payment,,1,1,1,1

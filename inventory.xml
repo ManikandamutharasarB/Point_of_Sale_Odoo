@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+	<record id="inventory_action" model="ir.actions.act_window">
+		<field name="name">Inventory</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">online.pos.inventory</field>
+	</record>
+
+
+	<record id="onlinePOS_inventory_form" model="ir.ui.view">
+		<field name="name">online.pos.inventory.form</field>
+		<field name="model">online.pos.inventory</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button id="create_inventory_wizard_button"
+						name="%(create_inventory_view_record)d" string="Add Product"
+						class="btn-primary" type="action" />
+					<field name="state" widget="statusbar" options="{'clickable':'1'}"/>
+				<!--  	<button id="create_billing_draft_button"
+						name="%(create_inventory_view_record)d" string="Draft"
+						class="oe_highlight" type="action"/>
+					<button id="create_billing_confirm_button"
+						name="%(create_inventory_view_record)d" string="Confirm"
+						class="oe_highlight" type="action"/>
+					<button id="create_billing_cancel_button"
+						name="%(create_inventory_view_record)d" string="Cancel"
+						class="oe_highlight" type="action"/> -->
+				</header>
+				<sheet>
+					<field name="set_product_image" widget="image"
+						class="oe_avatar" />
+					<group>
+						<group>
+							<field name="product_id" />
+							<field name="name" />
+							<field name="price" />
+							<field name="quantity" />
+							<field name="gst" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="onlinePOS_inventory" model="ir.ui.view">
+		<field name="name">online.pos.inventory.tree</field>
+		<field name="model">online.pos.inventory</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="set_product_image" widget="image"
+					class="oe_avatar" />
+				<field name="product_id" />
+				<field name="name" />
+				<field name="price" />
+				<field name="quantity" />
+				<field name="gst" />
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+	
+	<record id="onlinePOS_inventory_search" model="ir.ui.view">
+		<field name="name">online.pos.inventory.search</field>
+		<field name="model">online.pos.inventory</field>
+		<field name="arch" type="xml">
+			<search string="product_search">
+				<field name="product_id" />
+				<field name="name" />
+				<field name="state"/>
+				<separator/>
+				<filter string="Godown" name="godown" domain="[('state','=','godown')]"/>
+				<searchpanel>
+					<field name="state" string="inventory status" enable_counters="1"/>
+				</searchpanel>	
+			</search>
+		</field>
+	</record>
+	
+	<record id="onlinePOS_inventory_add_action" model="ir.actions.server">
+		<field name="name">Change Status</field>
+		<field name="type">ir.actions.server</field>
+		<field name="model_id" ref="model_online_pos_inventory"/>
+		<field name="binding_model_id" ref="model_online_pos_inventory"/>
+		<field name="state">code</field>
+		<field name="code">records.button_immediate_install()</field>
+	</record>
+
+
+
+	<menuitem id="inventory_pos_root" name="Inventory"
+		parent="onlinepos_root" action="inventory_action" sequence="3" />
+
+
+</odoo>

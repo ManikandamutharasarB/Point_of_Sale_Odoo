@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+	<record id="customer_action" model="ir.actions.act_window">
+		<field name="name">Customer</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">online.pos.customer</field>
+	</record>
+
+
+	<record id="onlinePOS_customer_form" model="ir.ui.view">
+		<field name="name">online.pos.customer.form</field>
+		<field name="model">online.pos.customer</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<group>
+							<field name="customer_id" />
+							<field name="name" />
+							<field name="gender" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="onlinePOS_customer" model="ir.ui.view">
+		<field name="name">online.pos.customer.tree</field>
+		<field name="model">online.pos.customer</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="customer_id" />
+				<field name="name" />
+				<field name="gender" />
+			</tree>
+		</field>
+	</record>
+
+
+
+	<menuitem id="customer_pos_root" name="Customer"
+		parent="onlinepos_root" action="customer_action" sequence="4" />
+
+
+</odoo>

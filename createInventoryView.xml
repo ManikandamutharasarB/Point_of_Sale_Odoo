@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="create_inventory_form_view" model="ir.ui.view">
+		<field name="name">online.pos.inventory.form.wizard</field>
+		<field name="model">online.pos.wizard</field>
+		<field name="arch" type="xml">
+			<form>
+				<field name ="set_product_image" widget="image" class="oe_avatar"/>
+					<group>
+						<field name="product_id"/>
+						<field name="product_name"/>
+						<field name="price"/>
+						<field name="quantity"/>
+						<field name="gst"/>
+					</group>
+					<footer>
+						<button name="create_inventory_view_record" string="Save" type="object" special="save"/>
+						<button string="Cancel" class="btn-secondary" special="cancel"/>
+					</footer>
+			</form>
+		</field>
+	</record>
+
+<record id="create_inventory_view_record" model="ir.actions.act_window">
+		<field name="name">Inventory View</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">online.pos.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="create_inventory_form_view"/>
+		<field name="target">new</field>
+</record>	
+
+	
+	
+</odoo>
